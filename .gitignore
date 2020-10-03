@@ -1,0 +1,8 @@
+# .gitignore file tells the git about what files it should not worry about.
+#
+#  Bot build directory
+Build/
+#
+#Telegram Bot Token File
+**/.token
+
