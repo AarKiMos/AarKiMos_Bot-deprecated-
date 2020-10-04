@@ -71,25 +71,30 @@ int main(int argc, char *argv[])
                 printf("%s: %s \n", message.from->first_name, message.text);
 
                 char str[4096];
-                if (strstr(message.text, "/start"))
-                {
-                    is_sleeping = 0;
-                }
 
                 if (!is_sleeping)
                 {
-
-                    if (strstr(message.text, "/dice"))
+                    if ((strstr(message.text, "/sleep")) || (strstr(message.text, "/stop")))
+                    {
+                        is_sleeping = 1;
+                    }
+                    else if (strstr(message.text, "/dice"))
                     {
                         telebot_send_dice(handle, message.chat->id, false, 0, "");
                     }
                     else
                     {
                         snprintf(str, SIZE_OF_ARRAY(str), "<i>%s</i>", message.text);
+                        ret = telebot_send_message(handle, message.chat->id, str, "HTML", false, false, updates[index].message.message_id, "");
                     }
-                    ret = telebot_send_message(handle, message.chat->id, str, "HTML", false, false, updates[index].message.message_id, "");
                 }
 
+                if (strstr(message.text, "/start"))
+                {
+                    is_sleeping = 0;
+                    ret = telebot_send_message(handle, message.chat->id, "Hello", "HTML", false, false, updates[index].message.message_id, "");
+                }
+                
                 if (ret != TELEBOT_ERROR_NONE)
                 {
                     printf("Failed to send message: %d \n", ret);
