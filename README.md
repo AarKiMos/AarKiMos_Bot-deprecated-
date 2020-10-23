@@ -1,4 +1,4 @@
-#I have decided to do this project without any pre made library. It can be found [here](https://github.com/AarKiMos/AarKiMos_Bot)
+# I have decided to do this project without any pre made library. It can be found [here](https://github.com/AarKiMos/AarKiMos_Bot)
 
 ## AarKiMos_Bot 
 ##### AarKiMos_Bot is a friendly telegram chatbot and a fun little starter project developed in language 'C'.
